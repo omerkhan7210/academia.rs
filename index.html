@@ -1,695 +1,1823 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Academia — English Level Assessment</title>
-<style>
-:root{
-  --navy:#12233F;
-  --navy-2:#1B3358;
-  --gold:#C6972E;
-  --gold-dark:#9C7420;
-  --gold-light:#F4E9D2;
-  --paper:#FBFAF7;
-  --paper-2:#F3F1EA;
-  --ink:#161A22;
-  --ink-soft:#565C6B;
-  --ink-faint:#8A8F9C;
-  --line:#E3E0D6;
-  --line-strong:#CBC7B8;
-  --ok:#2E6B4F;
-  --radius-sm:6px;
-  --radius-md:12px;
-  --radius-lg:18px;
-  --serif:'Source Serif Pro', Georgia, 'Times New Roman', serif;
-  --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  margin:0;
-  font-family:var(--sans);
-  color:var(--ink);
-  background:var(--paper);
-  -webkit-font-smoothing:antialiased;
-}
-img{max-width:100%;display:block;}
-a{color:inherit;}
-.wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
-@media(max-width:640px){.wrap{padding:0 20px;}}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Academia — English Level Assessment</title>
+    <style>
+      :root {
+        --navy: #0089d0;
+        --navy-2: #041b45;
+        --gold: #f68220;
+        --gold-dark: #a6ce39;
+        --gold-light: #f4e9d2;
+        --paper: #fbfaf7;
+        --paper-2: #f3f1ea;
+        --ink: #161a22;
+        --ink-soft: #565c6b;
+        --ink-faint: #8a8f9c;
+        --line: #e3e0d6;
+        --line-strong: #cbc7b8;
+        --ok: #2e6b4f;
+        --radius-sm: 6px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+        --serif: "Source Serif Pro", Georgia, "Times New Roman", serif;
+        --sans:
+          "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: var(--sans);
+        color: var(--ink);
+        background: var(--paper);
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+      }
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+      @media (max-width: 640px) {
+        .wrap {
+          padding: 0 20px;
+        }
+      }
 
-/* dev note banner */
-.devnote{background:var(--navy);color:#EFE7D2;font-size:12.5px;padding:10px 20px;text-align:center;line-height:1.5;}
-.devnote b{color:var(--gold);}
+      /* dev note banner */
+      .devnote {
+        background: var(--navy);
+        color: #efe7d2;
+        font-size: 12.5px;
+        padding: 10px 20px;
+        text-align: center;
+        line-height: 1.5;
+      }
+      .devnote b {
+        color: var(--gold);
+      }
 
-/* HEADER */
-header{
-  position:sticky;top:0;z-index:50;background:rgba(251,250,247,0.92);backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--line);transition:padding .25s ease;
-}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:20px 0;transition:padding .25s ease;}
-header.scrolled .header-inner{padding:12px 0;}
-.logo img{height:44px;transition:height .25s ease;}
-header.scrolled .logo img{height:34px;}
-nav.mainnav{display:flex;align-items:center;gap:36px;}
-nav.mainnav a{font-size:14.5px;color:var(--ink-soft);text-decoration:none;font-weight:500;}
-nav.mainnav a:hover{color:var(--navy);}
-.header-right{display:flex;align-items:center;gap:20px;}
-.btn{
-  display:inline-flex;align-items:center;gap:8px;justify-content:center;
-  border-radius:var(--radius-sm);font-weight:600;font-size:14.5px;cursor:pointer;
-  border:1px solid transparent;text-decoration:none;transition:all .15s ease;white-space:nowrap;
-}
-.btn-primary{background:var(--navy);color:#fff;padding:12px 22px;}
-.btn-primary:hover{background:var(--navy-2);}
-.btn-gold{background:var(--gold);color:var(--navy);padding:14px 28px;font-size:15.5px;}
-.btn-gold:hover{background:var(--gold-dark);color:#fff;}
-.btn-ghost{background:transparent;border:1px solid var(--line-strong);color:var(--ink);padding:12px 22px;}
-.btn-ghost:hover{border-color:var(--navy);}
-.btn-text{background:none;border:none;color:var(--ink-soft);font-size:14px;text-decoration:underline;cursor:pointer;font-weight:500;}
-.hdr-cta{padding:10px 20px;font-size:14px;}
-.menu-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--navy);}
+      /* HEADER */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(251, 250, 247, 0.92);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
+        transition: padding 0.25s ease;
+      }
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+        transition: padding 0.25s ease;
+      }
+      header.scrolled .header-inner {
+        padding: 12px 0;
+      }
+      .logo img {
+        height: 44px;
+        transition: height 0.25s ease;
+      }
+      header.scrolled .logo img {
+        height: 34px;
+      }
+      nav.mainnav {
+        display: flex;
+        align-items: center;
+        gap: 36px;
+      }
+      nav.mainnav a {
+        font-size: 14.5px;
+        color: var(--ink-soft);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      nav.mainnav a:hover {
+        color: var(--navy);
+      }
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: center;
+        border-radius: var(--radius-sm);
+        font-weight: 600;
+        font-size: 14.5px;
+        cursor: pointer;
+        border: 1px solid transparent;
+        text-decoration: none;
+        transition: all 0.15s ease;
+        white-space: nowrap;
+      }
+      .btn-primary {
+        background: var(--navy);
+        color: #fff;
+        padding: 12px 22px;
+      }
+      .btn-primary:hover {
+        background: var(--navy-2);
+      }
+      .btn-gold {
+        background: var(--gold);
+        color: var(--navy);
+        padding: 14px 28px;
+        font-size: 15.5px;
+      }
+      .btn-gold:hover {
+        background: var(--gold-dark);
+        color: #fff;
+      }
+      .btn-ghost {
+        background: transparent;
+        border: 1px solid var(--line-strong);
+        color: var(--ink);
+        padding: 12px 22px;
+      }
+      .btn-ghost:hover {
+        border-color: var(--navy);
+      }
+      .btn-text {
+        background: none;
+        border: none;
+        color: var(--ink-soft);
+        font-size: 14px;
+        text-decoration: underline;
+        cursor: pointer;
+        font-weight: 500;
+      }
+      .hdr-cta {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--navy);
+      }
 
-@media(max-width:900px){
-  nav.mainnav{display:none;}
-  .menu-toggle{display:block;}
-}
+      @media (max-width: 900px) {
+        nav.mainnav {
+          display: none;
+        }
+        .menu-toggle {
+          display: block;
+        }
+      }
 
-/* SECTION SHELL */
-.screen{display:none;padding:76px 0 96px;}
-.screen.active{display:block;}
-.eyebrow{font-size:13px;letter-spacing:0.02em;color:var(--gold-dark);font-weight:600;margin:0 0 14px;}
+      /* SECTION SHELL */
+      .screen {
+        display: none;
+        padding: 76px 0 96px;
+      }
+      .screen.active {
+        display: block;
+      }
+      .eyebrow {
+        font-size: 13px;
+        letter-spacing: 0.02em;
+        color: var(--gold-dark);
+        font-weight: 600;
+        margin: 0 0 14px;
+      }
 
-/* HERO */
-.hero{padding:64px 0 40px;}
-.hero-grid{display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px;max-width:760px;margin:0 auto;}
-.hero h1{
-  font-family:var(--serif);font-weight:600;font-size:52px;line-height:1.08;letter-spacing:-0.01em;margin:0;color:var(--navy);
-}
-.hero p.lede{font-size:18px;line-height:1.6;color:var(--ink-soft);margin:0;max-width:540px;}
-@media(max-width:640px){.hero h1{font-size:34px;}.hero p.lede{font-size:16px;}}
+      /* HERO */
+      .hero {
+        padding: 64px 0 40px;
+      }
+      .hero-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 28px;
+        max-width: 760px;
+        margin: 0 auto;
+      }
+      .hero h1 {
+        font-family: var(--serif);
+        font-weight: 600;
+        font-size: 52px;
+        line-height: 1.08;
+        letter-spacing: -0.01em;
+        margin: 0;
+        color: var(--navy);
+      }
+      .hero p.lede {
+        font-size: 18px;
+        line-height: 1.6;
+        color: var(--ink-soft);
+        margin: 0;
+        max-width: 540px;
+      }
+      @media (max-width: 640px) {
+        .hero h1 {
+          font-size: 34px;
+        }
+        .hero p.lede {
+          font-size: 16px;
+        }
+      }
 
-/* progression bar */
-.progression{width:100%;max-width:620px;margin:12px 0 4px;}
-.progression-track{display:flex;align-items:center;}
-.prog-node{display:flex;flex-direction:column;align-items:center;gap:8px;flex:0 0 auto;width:56px;}
-.prog-dot{width:14px;height:14px;border-radius:50%;background:var(--line-strong);border:2px solid var(--paper);box-shadow:0 0 0 1px var(--line-strong);}
-.prog-node.filled .prog-dot{background:var(--gold);box-shadow:0 0 0 1px var(--gold);}
-.prog-node.current .prog-dot{background:var(--navy);box-shadow:0 0 0 4px var(--gold-light);width:16px;height:16px;}
-.prog-label{font-size:12.5px;font-weight:600;color:var(--ink-faint);letter-spacing:0.02em;}
-.prog-node.filled .prog-label,.prog-node.current .prog-label{color:var(--navy);}
-.prog-connector{flex:1 1 auto;height:2px;background:var(--line-strong);margin-bottom:20px;}
-.prog-connector.filled{background:var(--gold);}
+      /* progression bar */
+      .progression {
+        width: 100%;
+        max-width: 620px;
+        margin: 12px 0 4px;
+      }
+      .progression-track {
+        display: flex;
+        align-items: center;
+      }
+      .prog-node {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        flex: 0 0 auto;
+        width: 56px;
+      }
+      .prog-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--line-strong);
+        border: 2px solid var(--paper);
+        box-shadow: 0 0 0 1px var(--line-strong);
+      }
+      .prog-node.filled .prog-dot {
+        background: var(--gold);
+        box-shadow: 0 0 0 1px var(--gold);
+      }
+      .prog-node.current .prog-dot {
+        background: var(--navy);
+        box-shadow: 0 0 0 4px var(--gold-light);
+        width: 16px;
+        height: 16px;
+      }
+      .prog-label {
+        font-size: 12.5px;
+        font-weight: 600;
+        color: var(--ink-faint);
+        letter-spacing: 0.02em;
+      }
+      .prog-node.filled .prog-label,
+      .prog-node.current .prog-label {
+        color: var(--navy);
+      }
+      .prog-connector {
+        flex: 1 1 auto;
+        height: 2px;
+        background: var(--line-strong);
+        margin-bottom: 20px;
+      }
+      .prog-connector.filled {
+        background: var(--gold);
+      }
 
-.benefits{display:flex;gap:14px;margin-top:8px;flex-wrap:wrap;justify-content:center;}
-.benefit{
-  border:1px solid var(--line);background:#fff;border-radius:var(--radius-md);
-  padding:18px 22px;text-align:left;flex:1 1 220px;max-width:250px;
-}
-.benefit .b-title{font-size:12.5px;font-weight:700;letter-spacing:0.03em;color:var(--gold-dark);margin:0 0 8px;}
-.benefit p{font-size:14px;color:var(--ink-soft);margin:0;line-height:1.5;}
-.hero-cta-block{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:8px;}
-.hero-note{font-size:13px;color:var(--ink-faint);}
+      .benefits {
+        display: flex;
+        gap: 14px;
+        margin-top: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .benefit {
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: var(--radius-md);
+        padding: 18px 22px;
+        text-align: left;
+        flex: 1 1 220px;
+        max-width: 250px;
+      }
+      .benefit .b-title {
+        font-size: 12.5px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        color: var(--gold-dark);
+        margin: 0 0 8px;
+      }
+      .benefit p {
+        font-size: 14px;
+        color: var(--ink-soft);
+        margin: 0;
+        line-height: 1.5;
+      }
+      .hero-cta-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-top: 8px;
+      }
+      .hero-note {
+        font-size: 13px;
+        color: var(--ink-faint);
+      }
 
-/* BEFORE WE START (lead form) */
-.centered-card-wrap{display:flex;justify-content:center;}
-.card{
-  background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);
-  padding:48px;width:100%;max-width:740px;box-shadow:0 1px 2px rgba(18,35,63,0.04);
-}
-.card h2{font-family:var(--serif);font-size:30px;margin:0 0 8px;color:var(--navy);font-weight:600;}
-.card>p.sub{color:var(--ink-soft);font-size:15px;margin:0 0 32px;}
-.field-group{margin-bottom:22px;}
-.field-group label{display:block;font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:8px;}
-.field-group input[type=text],.field-group input[type=email]{
-  width:100%;padding:13px 14px;border:1px solid var(--line-strong);border-radius:var(--radius-sm);
-  font-size:15px;font-family:var(--sans);background:var(--paper);transition:border-color .15s,box-shadow .15s;
-}
-.field-group input:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(18,35,63,0.08);background:#fff;}
-.field-error{font-size:12.5px;color:#B4392B;margin-top:6px;display:none;}
-.goal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px;}
-@media(max-width:560px){.goal-grid{grid-template-columns:1fr;}}
-.goal-card{
-  border:1px solid var(--line-strong);border-radius:var(--radius-sm);padding:14px 16px;font-size:14px;font-weight:500;
-  cursor:pointer;background:#fff;transition:all .15s ease;
-}
-.goal-card:hover{border-color:var(--navy);}
-.goal-card.selected{border-color:var(--gold);background:var(--gold-light);color:var(--navy);font-weight:600;}
-.card-cta-row{margin-top:32px;}
-.card-cta-row .btn{width:100%;padding:15px;font-size:16px;}
+      /* BEFORE WE START (lead form) */
+      .centered-card-wrap {
+        display: flex;
+        justify-content: center;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 48px;
+        width: 100%;
+        max-width: 740px;
+        box-shadow: 0 1px 2px rgba(18, 35, 63, 0.04);
+      }
+      .card h2 {
+        font-family: var(--serif);
+        font-size: 30px;
+        margin: 0 0 8px;
+        color: var(--navy);
+        font-weight: 600;
+      }
+      .card > p.sub {
+        color: var(--ink-soft);
+        font-size: 15px;
+        margin: 0 0 32px;
+      }
+      .field-group {
+        margin-bottom: 22px;
+      }
+      .field-group label {
+        display: block;
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--ink);
+        margin-bottom: 8px;
+      }
+      .field-group input[type="text"],
+      .field-group input[type="email"] {
+        width: 100%;
+        padding: 13px 14px;
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius-sm);
+        font-size: 15px;
+        font-family: var(--sans);
+        background: var(--paper);
+        transition:
+          border-color 0.15s,
+          box-shadow 0.15s;
+      }
+      .field-group input:focus {
+        outline: none;
+        border-color: var(--navy);
+        box-shadow: 0 0 0 3px rgba(18, 35, 63, 0.08);
+        background: #fff;
+      }
+      .field-error {
+        font-size: 12.5px;
+        color: #b4392b;
+        margin-top: 6px;
+        display: none;
+      }
+      .goal-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 6px;
+      }
+      @media (max-width: 560px) {
+        .goal-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .goal-card {
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius-sm);
+        padding: 14px 16px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        background: #fff;
+        transition: all 0.15s ease;
+      }
+      .goal-card:hover {
+        border-color: var(--navy);
+      }
+      .goal-card.selected {
+        border-color: var(--gold);
+        background: var(--gold-light);
+        color: var(--navy);
+        font-weight: 600;
+      }
+      .card-cta-row {
+        margin-top: 32px;
+      }
+      .card-cta-row .btn {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+      }
 
-/* QUIZ INTERFACE */
-.quiz-shell{max-width:720px;margin:0 auto;}
-.quiz-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
-.quiz-title{font-size:13.5px;font-weight:600;color:var(--ink-soft);letter-spacing:0.01em;}
-.quiz-count{font-size:13.5px;font-weight:600;color:var(--navy);}
-.progress-bar-track{height:6px;width:100%;background:var(--paper-2);border-radius:4px;overflow:hidden;margin-bottom:44px;}
-.progress-bar-fill{height:100%;background:var(--gold);border-radius:4px;transition:width .35s ease;}
-.q-eyebrow{font-size:12.5px;font-weight:700;letter-spacing:0.05em;color:var(--gold-dark);margin-bottom:14px;}
-.q-text{font-family:var(--serif);font-size:27px;line-height:1.4;color:var(--navy);font-weight:600;margin:0 0 34px;}
-.answers{display:flex;flex-direction:column;gap:12px;}
-.answer-row{
-  display:flex;align-items:center;gap:14px;border:1px solid var(--line-strong);border-radius:var(--radius-md);
-  padding:16px 20px;cursor:pointer;background:#fff;transition:all .15s ease;font-size:16px;
-}
-.answer-row:hover{border-color:var(--navy);background:var(--paper);}
-.answer-row .radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--line-strong);flex:0 0 auto;position:relative;transition:border-color .15s;}
-.answer-row.selected{border-color:var(--gold);background:var(--gold-light);}
-.answer-row.selected .radio{border-color:var(--gold-dark);}
-.answer-row.selected .radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--gold-dark);}
-.quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:40px;}
-.nav-prev{background:none;border:none;color:var(--ink-soft);font-size:15px;font-weight:600;cursor:pointer;padding:12px 6px;}
-.nav-prev:disabled{opacity:0.35;cursor:default;}
-.nav-next{padding:14px 30px;font-size:16px;}
-@media(max-width:640px){
-  .q-text{font-size:22px;}
-  .answer-row{padding:16px;}
-  .quiz-nav{flex-direction:row;}
-  .nav-next{flex:1;margin-left:16px;}
-}
+      /* QUIZ INTERFACE */
+      .quiz-shell {
+        max-width: 720px;
+        margin: 0 auto;
+      }
+      .quiz-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 14px;
+      }
+      .quiz-title {
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--ink-soft);
+        letter-spacing: 0.01em;
+      }
+      .quiz-count {
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--navy);
+      }
+      .progress-bar-track {
+        height: 6px;
+        width: 100%;
+        background: var(--paper-2);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 44px;
+      }
+      .progress-bar-fill {
+        height: 100%;
+        background: var(--gold);
+        border-radius: 4px;
+        transition: width 0.35s ease;
+      }
+      .q-eyebrow {
+        font-size: 12.5px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        color: var(--gold-dark);
+        margin-bottom: 14px;
+      }
+      .q-text {
+        font-family: var(--serif);
+        font-size: 27px;
+        line-height: 1.4;
+        color: var(--navy);
+        font-weight: 600;
+        margin: 0 0 34px;
+      }
+      .answers {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .answer-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius-md);
+        padding: 16px 20px;
+        cursor: pointer;
+        background: #fff;
+        transition: all 0.15s ease;
+        font-size: 16px;
+      }
+      .answer-row:hover {
+        border-color: var(--navy);
+        background: var(--paper);
+      }
+      .answer-row .radio {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        border: 2px solid var(--line-strong);
+        flex: 0 0 auto;
+        position: relative;
+        transition: border-color 0.15s;
+      }
+      .answer-row.selected {
+        border-color: var(--gold);
+        background: var(--gold-light);
+      }
+      .answer-row.selected .radio {
+        border-color: var(--gold-dark);
+      }
+      .answer-row.selected .radio::after {
+        content: "";
+        position: absolute;
+        inset: 3px;
+        border-radius: 50%;
+        background: var(--gold-dark);
+      }
+      .quiz-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 40px;
+      }
+      .nav-prev {
+        background: none;
+        border: none;
+        color: var(--ink-soft);
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 12px 6px;
+      }
+      .nav-prev:disabled {
+        opacity: 0.35;
+        cursor: default;
+      }
+      .nav-next {
+        padding: 14px 30px;
+        font-size: 16px;
+      }
+      @media (max-width: 640px) {
+        .q-text {
+          font-size: 22px;
+        }
+        .answer-row {
+          padding: 16px;
+        }
+        .quiz-nav {
+          flex-direction: row;
+        }
+        .nav-next {
+          flex: 1;
+          margin-left: 16px;
+        }
+      }
 
-/* COMPLETION / RESULT */
-.result-wrap{max-width:640px;margin:0 auto;text-align:center;}
-.result-wrap h2.done{font-family:var(--serif);font-size:32px;color:var(--navy);margin:0 0 10px;}
-.result-wrap p.done-sub{color:var(--ink-soft);font-size:16px;margin:0 0 40px;}
-.result-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:48px;text-align:center;box-shadow:0 1px 2px rgba(18,35,63,0.04);}
-.result-label{font-size:12.5px;font-weight:700;letter-spacing:0.05em;color:var(--gold-dark);margin:0 0 14px;}
-.result-score{font-family:var(--serif);font-size:64px;color:var(--navy);font-weight:600;margin:0;}
-.result-score span{font-size:28px;color:var(--ink-faint);font-weight:500;}
-.result-caption{font-size:14px;color:var(--ink-soft);margin:6px 0 28px;}
-.result-explain{font-size:14.5px;color:var(--ink-soft);line-height:1.65;max-width:480px;margin:0 auto 30px;border-top:1px solid var(--line);padding-top:26px;}
-.result-cta-head{font-family:var(--serif);font-size:21px;color:var(--navy);margin:0 0 10px;font-weight:600;}
-.result-cta-body{font-size:14.5px;color:var(--ink-soft);line-height:1.6;max-width:460px;margin:0 auto 22px;}
-.free-pill{display:inline-block;background:var(--gold-light);color:var(--gold-dark);font-size:12px;font-weight:700;letter-spacing:0.03em;padding:5px 12px;border-radius:20px;margin-bottom:18px;}
-.result-actions{display:flex;flex-direction:column;gap:14px;align-items:center;margin-top:6px;}
-.result-actions .btn-gold{width:100%;max-width:420px;}
+      /* COMPLETION / RESULT */
+      .result-wrap {
+        max-width: 640px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .result-wrap h2.done {
+        font-family: var(--serif);
+        font-size: 32px;
+        color: var(--navy);
+        margin: 0 0 10px;
+      }
+      .result-wrap p.done-sub {
+        color: var(--ink-soft);
+        font-size: 16px;
+        margin: 0 0 40px;
+      }
+      .result-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 48px;
+        text-align: center;
+        box-shadow: 0 1px 2px rgba(18, 35, 63, 0.04);
+      }
+      .result-label {
+        font-size: 12.5px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        color: var(--gold-dark);
+        margin: 0 0 14px;
+      }
+      .result-score {
+        font-family: var(--serif);
+        font-size: 64px;
+        color: var(--navy);
+        font-weight: 600;
+        margin: 0;
+      }
+      .result-score span {
+        font-size: 28px;
+        color: var(--ink-faint);
+        font-weight: 500;
+      }
+      .result-caption {
+        font-size: 14px;
+        color: var(--ink-soft);
+        margin: 6px 0 28px;
+      }
+      .result-explain {
+        font-size: 14.5px;
+        color: var(--ink-soft);
+        line-height: 1.65;
+        max-width: 480px;
+        margin: 0 auto 30px;
+        border-top: 1px solid var(--line);
+        padding-top: 26px;
+      }
+      .result-cta-head {
+        font-family: var(--serif);
+        font-size: 21px;
+        color: var(--navy);
+        margin: 0 0 10px;
+        font-weight: 600;
+      }
+      .result-cta-body {
+        font-size: 14.5px;
+        color: var(--ink-soft);
+        line-height: 1.6;
+        max-width: 460px;
+        margin: 0 auto 22px;
+      }
+      .free-pill {
+        display: inline-block;
+        background: var(--gold-light);
+        color: var(--gold-dark);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        padding: 5px 12px;
+        border-radius: 20px;
+        margin-bottom: 18px;
+      }
+      .result-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        align-items: center;
+        margin-top: 6px;
+      }
+      .result-actions .btn-gold {
+        width: 100%;
+        max-width: 420px;
+      }
 
-.benefit-strip{display:flex;gap:14px;justify-content:center;margin:44px 0;flex-wrap:wrap;}
-.benefit-strip .benefit{max-width:210px;text-align:center;}
+      .benefit-strip {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        margin: 44px 0;
+        flex-wrap: wrap;
+      }
+      .benefit-strip .benefit {
+        max-width: 210px;
+        text-align: center;
+      }
 
-.trust-strip{
-  display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;
-  border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;margin-top:44px;
-}
-.trust-item{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;max-width:170px;}
-.trust-item .t-num{font-family:var(--serif);font-size:20px;color:var(--navy);font-weight:600;}
-.trust-item .t-cap{font-size:12.5px;color:var(--ink-soft);}
+      .trust-strip {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 36px;
+        flex-wrap: wrap;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 26px 0;
+        margin-top: 44px;
+      }
+      .trust-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        text-align: center;
+        max-width: 170px;
+      }
+      .trust-item .t-num {
+        font-family: var(--serif);
+        font-size: 20px;
+        color: var(--navy);
+        font-weight: 600;
+      }
+      .trust-item .t-cap {
+        font-size: 12.5px;
+        color: var(--ink-soft);
+      }
 
-/* NEXT STEPS */
-.section-head{text-align:center;max-width:560px;margin:0 auto 40px;}
-.section-head h2{font-family:var(--serif);font-size:30px;color:var(--navy);margin:0 0 10px;font-weight:600;}
-.section-head p{color:var(--ink-soft);font-size:15px;margin:0;}
-.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-@media(max-width:900px){.service-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:560px){.service-grid{grid-template-columns:1fr;}}
-.service-card{border:1px solid var(--line);border-radius:var(--radius-md);padding:26px 22px;background:#fff;display:flex;flex-direction:column;gap:14px;}
-.service-card h3{font-size:16px;margin:0;color:var(--navy);font-weight:700;}
-.service-card p{font-size:13.5px;color:var(--ink-soft);margin:0;line-height:1.5;flex:1;}
-.service-card .btn-text{align-self:flex-start;text-decoration:none;color:var(--gold-dark);font-weight:700;font-size:13.5px;}
+      /* NEXT STEPS */
+      .section-head {
+        text-align: center;
+        max-width: 560px;
+        margin: 0 auto 40px;
+      }
+      .section-head h2 {
+        font-family: var(--serif);
+        font-size: 30px;
+        color: var(--navy);
+        margin: 0 0 10px;
+        font-weight: 600;
+      }
+      .section-head p {
+        color: var(--ink-soft);
+        font-size: 15px;
+        margin: 0;
+      }
+      .service-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+      @media (max-width: 900px) {
+        .service-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 560px) {
+        .service-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .service-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 26px 22px;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .service-card h3 {
+        font-size: 16px;
+        margin: 0;
+        color: var(--navy);
+        font-weight: 700;
+      }
+      .service-card p {
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin: 0;
+        line-height: 1.5;
+        flex: 1;
+      }
+      .service-card .btn-text {
+        align-self: flex-start;
+        text-decoration: none;
+        color: var(--gold-dark);
+        font-weight: 700;
+        font-size: 13.5px;
+      }
 
-/* OFFER */
-.offer-card{
-  max-width:640px;margin:0 auto;background:var(--navy);color:#fff;border-radius:var(--radius-lg);
-  padding:44px 48px;position:relative;overflow:hidden;
-}
-.offer-label{font-size:11.5px;font-weight:700;letter-spacing:0.06em;color:var(--gold);margin:0 0 16px;}
-.offer-card h2{font-family:var(--serif);font-size:26px;margin:0 0 20px;font-weight:600;}
-.offer-product{font-size:16px;font-weight:600;margin:0 0 4px;}
-.offer-detail{font-size:14px;color:#C7CEDB;margin:0 0 22px;}
-.price-row{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;}
-.price-old{font-size:18px;color:#8B96AC;text-decoration:line-through;}
-.price-new{font-family:var(--serif);font-size:34px;color:var(--gold);font-weight:600;}
-.price-save{display:inline-block;font-size:12.5px;font-weight:700;color:var(--navy);background:var(--gold);padding:4px 10px;border-radius:14px;margin-bottom:22px;}
-.offer-fine{font-size:13px;color:#9AA4B8;margin:0 0 26px;line-height:1.6;}
-.offer-actions{display:flex;flex-direction:column;gap:12px;}
-.offer-actions .btn-gold{width:100%;}
-.offer-actions .btn-ghost-dark{background:transparent;border:1px solid rgba(255,255,255,0.25);color:#fff;padding:14px;border-radius:var(--radius-sm);font-weight:600;font-size:14.5px;text-align:center;cursor:pointer;}
-.offer-actions .btn-ghost-dark:hover{border-color:#fff;}
+      /* OFFER */
+      .offer-card {
+        max-width: 640px;
+        margin: 0 auto;
+        background: var(--navy);
+        color: #fff;
+        border-radius: var(--radius-lg);
+        padding: 44px 48px;
+        position: relative;
+        overflow: hidden;
+      }
+      .offer-label {
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        color: var(--gold);
+        margin: 0 0 16px;
+      }
+      .offer-card h2 {
+        font-family: var(--serif);
+        font-size: 26px;
+        margin: 0 0 20px;
+        font-weight: 600;
+      }
+      .offer-product {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 4px;
+      }
+      .offer-detail {
+        font-size: 14px;
+        color: #c7cedb;
+        margin: 0 0 22px;
+      }
+      .price-row {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        margin-bottom: 6px;
+      }
+      .price-old {
+        font-size: 18px;
+        color: #8b96ac;
+        text-decoration: line-through;
+      }
+      .price-new {
+        font-family: var(--serif);
+        font-size: 34px;
+        color: var(--gold);
+        font-weight: 600;
+      }
+      .price-save {
+        display: inline-block;
+        font-size: 12.5px;
+        font-weight: 700;
+        color: var(--navy);
+        background: var(--gold);
+        padding: 4px 10px;
+        border-radius: 14px;
+        margin-bottom: 22px;
+      }
+      .offer-fine {
+        font-size: 13px;
+        color: #9aa4b8;
+        margin: 0 0 26px;
+        line-height: 1.6;
+      }
+      .offer-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .offer-actions .btn-gold {
+        width: 100%;
+      }
+      .offer-actions .btn-ghost-dark {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: #fff;
+        padding: 14px;
+        border-radius: var(--radius-sm);
+        font-weight: 600;
+        font-size: 14.5px;
+        text-align: center;
+        cursor: pointer;
+      }
+      .offer-actions .btn-ghost-dark:hover {
+        border-color: #fff;
+      }
 
-/* PAYMENT */
-.pay-wrap{max-width:640px;margin:60px auto 0;display:flex;gap:32px;border-top:1px solid var(--line);padding-top:40px;}
-@media(max-width:640px){.pay-wrap{flex-direction:column;}}
-.pay-qr{flex:0 0 180px;display:flex;flex-direction:column;align-items:center;gap:10px;}
-.qr-box{width:150px;height:150px;border:1px solid var(--line-strong);border-radius:var(--radius-sm);background:repeating-linear-gradient(45deg,#eee,#eee 6px,#fff 6px,#fff 12px);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--ink-faint);text-align:center;}
-.pay-copy{flex:1;}
-.pay-copy h3{font-size:16px;margin:0 0 8px;color:var(--navy);}
-.pay-copy p{font-size:14px;color:var(--ink-soft);margin:0 0 16px;line-height:1.5;}
-.mobile-pay-btn{display:none;}
-@media(max-width:640px){
-  .pay-qr{display:none;}
-  .mobile-pay-btn{display:inline-flex;}
-}
+      /* PAYMENT */
+      .pay-wrap {
+        max-width: 640px;
+        margin: 60px auto 0;
+        display: flex;
+        gap: 32px;
+        border-top: 1px solid var(--line);
+        padding-top: 40px;
+      }
+      @media (max-width: 640px) {
+        .pay-wrap {
+          flex-direction: column;
+        }
+      }
+      .pay-qr {
+        flex: 0 0 180px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .qr-box {
+        width: 150px;
+        height: 150px;
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius-sm);
+        background: repeating-linear-gradient(
+          45deg,
+          #eee,
+          #eee 6px,
+          #fff 6px,
+          #fff 12px
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        color: var(--ink-faint);
+        text-align: center;
+      }
+      .pay-copy {
+        flex: 1;
+      }
+      .pay-copy h3 {
+        font-size: 16px;
+        margin: 0 0 8px;
+        color: var(--navy);
+      }
+      .pay-copy p {
+        font-size: 14px;
+        color: var(--ink-soft);
+        margin: 0 0 16px;
+        line-height: 1.5;
+      }
+      .mobile-pay-btn {
+        display: none;
+      }
+      @media (max-width: 640px) {
+        .pay-qr {
+          display: none;
+        }
+        .mobile-pay-btn {
+          display: inline-flex;
+        }
+      }
 
-/* FAQ */
-.faq-wrap{max-width:640px;margin:0 auto;}
-.faq-item{border-bottom:1px solid var(--line);}
-.faq-q{width:100%;text-align:left;background:none;border:none;padding:18px 4px;font-size:15px;font-weight:600;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
-.faq-a p{font-size:14px;color:var(--ink-soft);padding:0 4px 18px;margin:0;line-height:1.6;}
-.faq-item.open .faq-a{max-height:200px;}
-.faq-chevron{transition:transform .2s ease;font-size:14px;color:var(--ink-faint);}
-.faq-item.open .faq-chevron{transform:rotate(180deg);}
+      /* FAQ */
+      .faq-wrap {
+        max-width: 640px;
+        margin: 0 auto;
+      }
+      .faq-item {
+        border-bottom: 1px solid var(--line);
+      }
+      .faq-q {
+        width: 100%;
+        text-align: left;
+        background: none;
+        border: none;
+        padding: 18px 4px;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--navy);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: var(--sans);
+      }
+      .faq-a {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.25s ease;
+      }
+      .faq-a p {
+        font-size: 14px;
+        color: var(--ink-soft);
+        padding: 0 4px 18px;
+        margin: 0;
+        line-height: 1.6;
+      }
+      .faq-item.open .faq-a {
+        max-height: 200px;
+      }
+      .faq-chevron {
+        transition: transform 0.2s ease;
+        font-size: 14px;
+        color: var(--ink-faint);
+      }
+      .faq-item.open .faq-chevron {
+        transform: rotate(180deg);
+      }
 
-/* FOOTER */
-footer{background:var(--paper-2);border-top:1px solid var(--line);padding:48px 0 28px;margin-top:0;}
-.footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px;}
-.footer-logo img{height:36px;margin-bottom:14px;}
-.footer-col p{font-size:13.5px;color:var(--ink-soft);margin:0 0 6px;line-height:1.6;}
-.footer-col h4{font-size:12.5px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-faint);margin:0 0 12px;}
-.footer-bottom{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-faint);text-align:center;}
+      /* FOOTER */
+      footer {
+        background: var(--paper-2);
+        border-top: 1px solid var(--line);
+        padding: 48px 0 28px;
+        margin-top: 0;
+      }
+      .footer-grid {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 32px;
+      }
+      .footer-logo img {
+        height: 36px;
+        margin-bottom: 14px;
+      }
+      .footer-col p {
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin: 0 0 6px;
+        line-height: 1.6;
+      }
+      .footer-col h4 {
+        font-size: 12.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--ink-faint);
+        margin: 0 0 12px;
+      }
+      .footer-bottom {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 1px solid var(--line);
+        font-size: 12.5px;
+        color: var(--ink-faint);
+        text-align: center;
+      }
 
-/* progress rail sticky sim controls */
-.dev-controls{
-  position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px 0;z-index:60;
-}
-.dev-controls .wrap{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
-.dev-controls span{font-size:12px;color:var(--ink-faint);font-weight:600;margin-right:4px;}
-.dev-btn{font-size:12.5px;padding:7px 12px;border-radius:6px;border:1px solid var(--line-strong);background:#fff;cursor:pointer;color:var(--ink-soft);}
-.dev-btn.on{background:var(--navy);color:#fff;border-color:var(--navy);}
-</style>
-</head>
-<body>
-
-<div class="devnote">Interactive prototype for developer handoff — brand colors below are a placeholder academic navy/gold palette; swap the CSS variables at the top of the file for Academia's exact brand hex values. <b>Bottom bar</b> lets you jump between journey states.</div>
-
-<header id="siteHeader">
-  <div class="wrap header-inner">
-    <a class="logo" href="#" aria-label="Academia home">
-      <img src="https://academia.rs/wp-content/uploads/2017/10/Academia-logo-krug-drop-shadow-small.png" alt="Academia Languages and Communication">
-    </a>
-    <nav class="mainnav">
-      <a href="#hero">English test</a>
-      <a href="#howitworks">How it works</a>
-      <a href="#trust">About Academia</a>
-    </nav>
-    <div class="header-right">
-      <button class="btn btn-primary hdr-cta" onclick="goTo('hero')">Start the test</button>
-      <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+      /* progress rail sticky sim controls */
+      .dev-controls {
+        position: sticky;
+        bottom: 0;
+        background: var(--ink);
+        border-top: 1px solid var(--line);
+        padding: 10px 0;
+        z-index: 60;
+      }
+      .dev-controls .wrap {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .dev-controls span {
+        font-size: 12px;
+        color: var(--ink-faint);
+        font-weight: 600;
+        margin-right: 4px;
+      }
+      .dev-btn {
+        font-size: 12.5px;
+        padding: 7px 12px;
+        border-radius: 6px;
+        border: 1px solid var(--line-strong);
+        background: #fff;
+        cursor: pointer;
+        color: var(--ink-soft);
+      }
+      .dev-btn.on {
+        background: var(--navy);
+        color: #fff;
+        border-color: var(--navy);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="devnote">
+      Interactive prototype for developer handoff — brand colors below are a
+      placeholder academic navy/gold palette; swap the CSS variables at the top
+      of the file for Academia's exact brand hex values. <b>Bottom bar</b> lets
+      you jump between journey states.
     </div>
-  </div>
-</header>
 
-<!-- ===================== HERO ===================== -->
-<section class="screen active" id="screen-hero">
-  <div class="hero wrap" id="hero">
-    <div class="hero-grid">
-      <div class="progression" aria-hidden="true">
-        <div class="progression-track">
-          <div class="prog-node filled"><div class="prog-dot"></div><div class="prog-label">A1</div></div>
-          <div class="prog-connector filled"></div>
-          <div class="prog-node filled"><div class="prog-dot"></div><div class="prog-label">A2</div></div>
-          <div class="prog-connector filled"></div>
-          <div class="prog-node current"><div class="prog-dot"></div><div class="prog-label">B1</div></div>
-          <div class="prog-connector"></div>
-          <div class="prog-node"><div class="prog-dot"></div><div class="prog-label">B2</div></div>
-          <div class="prog-connector"></div>
-          <div class="prog-node"><div class="prog-dot"></div><div class="prog-label">C1</div></div>
+    <header id="siteHeader">
+      <div class="wrap header-inner">
+        <a class="logo" href="#" aria-label="Academia home">
+          <img
+            src="https://academia.rs/wp-content/uploads/2017/10/Academia-logo-krug-drop-shadow-small.png"
+            alt="Academia Languages and Communication"
+          />
+        </a>
+        <nav class="mainnav">
+          <a href="#hero">English test</a>
+          <a href="#howitworks">How it works</a>
+          <a href="#trust">About Academia</a>
+        </nav>
+        <div class="header-right">
+          <button class="btn btn-primary hdr-cta" onclick="goTo('hero')">
+            Start the test
+          </button>
+          <button class="menu-toggle" aria-label="Menu">&#9776;</button>
         </div>
       </div>
+    </header>
 
-      <h1>How good is your English?</h1>
-      <p class="lede">Take our free English test and check your knowledge through 40 graded questions.</p>
-
-      <div class="benefits">
-        <div class="benefit"><p class="b-title">Free</p><p>No payment required to take the assessment.</p></div>
-        <div class="benefit"><p class="b-title">40 questions</p><p>A structured assessment across different levels of English.</p></div>
-        <div class="benefit"><p class="b-title">Level guidance</p><p>Get your result and find out what your next step could be.</p></div>
-      </div>
-
-      <div class="hero-cta-block">
-        <button class="btn btn-gold" onclick="goTo('leadform')">Start the test &rarr;</button>
-        <span class="hero-note">Takes approximately 10 minutes</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== LEAD FORM ===================== -->
-<section class="screen" id="screen-leadform">
-  <div class="wrap" id="howitworks">
-    <div class="section-head" style="margin-bottom:32px;">
-      <p class="eyebrow" style="text-align:center;">Before we start</p>
-    </div>
-    <div class="centered-card-wrap">
-      <div class="card">
-        <h2>Tell us a little about yourself</h2>
-        <p class="sub">We'll use this to connect your result to your recommendation.</p>
-
-        <div class="field-group">
-          <label for="fullname">Name and surname</label>
-          <input type="text" id="fullname" placeholder="Enter your full name">
-          <div class="field-error" id="err-fullname">Enter your name and surname.</div>
-        </div>
-        <div class="field-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="name@example.com">
-          <div class="field-error" id="err-email">Enter a valid email address.</div>
-        </div>
-
-        <div class="field-group">
-          <label>What would you like to achieve with your English?</label>
-          <div class="goal-grid" id="goalGrid">
-            <div class="goal-card" data-goal="cert">I need an English certificate</div>
-            <div class="goal-card" data-goal="improve">I want to improve my English</div>
-            <div class="goal-card" data-goal="ielts">I need IELTS preparation classes</div>
-            <div class="goal-card" data-goal="mock">I need a mock IELTS test</div>
-            <div class="goal-card" data-goal="check">I want to check my current knowledge</div>
+    <!-- ===================== HERO ===================== -->
+    <section class="screen active" id="screen-hero">
+      <div class="hero wrap" id="hero">
+        <div class="hero-grid">
+          <div class="progression" aria-hidden="true">
+            <div class="progression-track">
+              <div class="prog-node filled">
+                <div class="prog-dot"></div>
+                <div class="prog-label">A1</div>
+              </div>
+              <div class="prog-connector filled"></div>
+              <div class="prog-node filled">
+                <div class="prog-dot"></div>
+                <div class="prog-label">A2</div>
+              </div>
+              <div class="prog-connector filled"></div>
+              <div class="prog-node current">
+                <div class="prog-dot"></div>
+                <div class="prog-label">B1</div>
+              </div>
+              <div class="prog-connector"></div>
+              <div class="prog-node">
+                <div class="prog-dot"></div>
+                <div class="prog-label">B2</div>
+              </div>
+              <div class="prog-connector"></div>
+              <div class="prog-node">
+                <div class="prog-dot"></div>
+                <div class="prog-label">C1</div>
+              </div>
+            </div>
           </div>
-          <div class="field-error" id="err-goal">Select one option.</div>
-        </div>
 
-        <div class="card-cta-row">
-          <button class="btn btn-gold" onclick="submitLeadForm()">Start the test &rarr;</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+          <h1>How good is your English?</h1>
+          <p class="lede">
+            Take our free English test and check your knowledge through 40
+            graded questions.
+          </p>
 
-<!-- ===================== QUIZ ===================== -->
-<section class="screen" id="screen-quiz">
-  <div class="wrap">
-    <div class="quiz-shell">
-      <div class="quiz-header">
-        <span class="quiz-title">English level assessment</span>
-        <span class="quiz-count" id="quizCount">Question 1 of 40 &middot; <span id="quizPct">3%</span></span>
-      </div>
-      <div class="progress-bar-track"><div class="progress-bar-fill" id="progressFill" style="width:2.5%;"></div></div>
+          <div class="benefits">
+            <div class="benefit">
+              <p class="b-title">Free</p>
+              <p>No payment required to take the assessment.</p>
+            </div>
+            <div class="benefit">
+              <p class="b-title">40 questions</p>
+              <p>A structured assessment across different levels of English.</p>
+            </div>
+            <div class="benefit">
+              <p class="b-title">Level guidance</p>
+              <p>Get your result and find out what your next step could be.</p>
+            </div>
+          </div>
 
-      <div class="q-eyebrow" id="qEyebrow">Question 1</div>
-      <h2 class="q-text" id="qText">What's ____ name?</h2>
-      <div class="answers" id="answers"></div>
-
-      <div id="answerWarning" style="font-size:13px;color:#B4392B;margin-top:14px;display:none;">Select an answer to continue.</div>
-      <div class="quiz-nav" id="quizNav">
-        <button class="nav-prev" id="prevBtn" onclick="prevQuestion()" disabled>&larr; Previous</button>
-        <button class="btn btn-primary nav-next" id="nextBtn" onclick="nextQuestion()">Next &rarr;</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== RESULT ===================== -->
-<section class="screen" id="screen-result">
-  <div class="wrap">
-    <div class="result-wrap">
-      <h2 class="done">Test completed!</h2>
-      <p class="done-sub">You've completed all 40 questions.</p>
-
-      <div class="result-card">
-        <p class="result-label">Your result</p>
-        <p class="result-score">31<span>/40</span></p>
-        <p class="result-caption">correct answers</p>
-
-        <p class="result-explain">Your score gives you an indication of your current performance, but the number of correct answers alone does not provide a precise CEFR level.</p>
-
-        <span class="free-pill">Free</span>
-        <p class="result-cta-head">Want to know your English level?</p>
-        <p class="result-cta-body">Send your result to Academia and receive a CEFR level assessment, brief analysis and recommendation for your next step.</p>
-
-        <div class="result-actions">
-          <button class="btn btn-gold" onclick="goTo('nextsteps')">Send my result and find out my level &rarr;</button>
-          <button class="btn-text" onclick="restartTest()">Start over</button>
+          <div class="hero-cta-block">
+            <button class="btn btn-gold" onclick="goTo('leadform')">
+              Start the test &rarr;
+            </button>
+            <span class="hero-note">Takes approximately 10 minutes</span>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="benefit-strip">
-        <div class="benefit"><p class="b-title">CEFR level</p><p>Find out where your English currently sits within the CEFR framework.</p></div>
-        <div class="benefit"><p class="b-title">Personalised feedback</p><p>Receive a brief assessment of your current position.</p></div>
-        <div class="benefit"><p class="b-title">Next-step recommendation</p><p>Understand what you should work on next.</p></div>
-      </div>
-
-      <div class="trust-strip" id="trust">
-        <div class="trust-item"><div class="t-num">1997</div><div class="t-cap">Established</div></div>
-        <div class="trust-item"><div class="t-num">Cambridge</div><div class="t-cap">Exam Preparation Centre &middot; Licence RSPC000084</div></div>
-        <div class="trust-item"><div class="t-num">Aptis</div><div class="t-cap">Testing Centre</div></div>
-        <div class="trust-item"><div class="t-num">British Council</div><div class="t-cap">Long-term Advantage Programme partner</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== NEXT STEPS + OFFER + PAYMENT + FAQ ===================== -->
-<section class="screen" id="screen-nextsteps">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>What's your next step?</h2>
-      <p>Choose your individual online lessons, a CEFR language certificate, IELTS preparation or an IELTS mock test.</p>
-    </div>
-
-    <div class="service-grid">
-      <div class="service-card">
-        <h3>Improve your English</h3>
-        <p>Individual online lessons, built around your level, goals and pace.</p>
-        <a class="btn-text" href="#">Learn more &rarr;</a>
-      </div>
-      <div class="service-card">
-        <h3>English certificate</h3>
-        <p>A recognised, bilingual CEFR language certificate.</p>
-        <a class="btn-text" href="#">Learn more &rarr;</a>
-      </div>
-      <div class="service-card">
-        <h3>IELTS preparation</h3>
-        <p>Individual preparation classes for the IELTS exam.</p>
-        <a class="btn-text" href="#">Learn more &rarr;</a>
-      </div>
-      <div class="service-card">
-        <h3>IELTS mock test</h3>
-        <p>A full IELTS exam simulation under real conditions.</p>
-        <a class="btn-text" href="#">Learn more &rarr;</a>
-      </div>
-    </div>
-
-    <div style="margin-top:60px;">
-      <div class="offer-card">
-        <p class="offer-label">Special offer</p>
-        <h2>A next step for your English</h2>
-        <p class="offer-product">Individual online English lessons</p>
-        <p class="offer-detail">10 individual lessons</p>
-        <div class="price-row">
-          <span class="price-old">30,000 RSD</span>
-          <span class="price-new">25,000 RSD</span>
+    <!-- ===================== LEAD FORM ===================== -->
+    <section class="screen" id="screen-leadform">
+      <div class="wrap" id="howitworks">
+        <div class="section-head" style="margin-bottom: 32px">
+          <p class="eyebrow" style="text-align: center">Before we start</p>
         </div>
-        <span class="price-save">Save 5,000 RSD</span>
-        <p class="offer-fine">Special price for users who completed the English test.<br>Offer valid for 7 days.</p>
-        <div class="offer-actions">
-          <button class="btn btn-gold">Buy &middot; pay 25,000 RSD</button>
-          <button class="btn-ghost-dark">I'd like to speak to you first</button>
-        </div>
-      </div>
+        <div class="centered-card-wrap">
+          <div class="card">
+            <h2>Tell us a little about yourself</h2>
+            <p class="sub">
+              We'll use this to connect your result to your recommendation.
+            </p>
 
-      <div class="pay-wrap">
-        <div class="pay-qr">
-          <div class="qr-box">QR payment code</div>
-          <span style="font-size:12px;color:var(--ink-faint);">Scan to pay</span>
-        </div>
-        <div class="pay-copy">
-          <h3>Payment</h3>
-          <p>On desktop, scan the QR code with your banking app to complete payment. Once paid, confirm below to link the payment to your result.</p>
-          <button class="btn btn-ghost mobile-pay-btn">View payment details &rarr;</button>
-          <button class="btn btn-ghost">Paid, link payment to my result</button>
+            <div class="field-group">
+              <label for="fullname">Name and surname</label>
+              <input
+                type="text"
+                id="fullname"
+                placeholder="Enter your full name"
+              />
+              <div class="field-error" id="err-fullname">
+                Enter your name and surname.
+              </div>
+            </div>
+            <div class="field-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="name@example.com" />
+              <div class="field-error" id="err-email">
+                Enter a valid email address.
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label>What would you like to achieve with your English?</label>
+              <div class="goal-grid" id="goalGrid">
+                <div class="goal-card" data-goal="cert">
+                  I need an English certificate
+                </div>
+                <div class="goal-card" data-goal="improve">
+                  I want to improve my English
+                </div>
+                <div class="goal-card" data-goal="ielts">
+                  I need IELTS preparation classes
+                </div>
+                <div class="goal-card" data-goal="mock">
+                  I need a mock IELTS test
+                </div>
+                <div class="goal-card" data-goal="check">
+                  I want to check my current knowledge
+                </div>
+              </div>
+              <div class="field-error" id="err-goal">Select one option.</div>
+            </div>
+
+            <div class="card-cta-row">
+              <button class="btn btn-gold" onclick="submitLeadForm()">
+                Start the test &rarr;
+              </button>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
+
+    <!-- ===================== QUIZ ===================== -->
+    <section class="screen" id="screen-quiz">
+      <div class="wrap">
+        <div class="quiz-shell">
+          <div class="quiz-header">
+            <span class="quiz-title">English level assessment</span>
+            <span class="quiz-count" id="quizCount"
+              >Question 1 of 40 &middot; <span id="quizPct">3%</span></span
+            >
+          </div>
+          <div class="progress-bar-track">
+            <div
+              class="progress-bar-fill"
+              id="progressFill"
+              style="width: 2.5%"
+            ></div>
+          </div>
+
+          <div class="q-eyebrow" id="qEyebrow">Question 1</div>
+          <h2 class="q-text" id="qText">What's ____ name?</h2>
+          <div class="answers" id="answers"></div>
+
+          <div
+            id="answerWarning"
+            style="
+              font-size: 13px;
+              color: #b4392b;
+              margin-top: 14px;
+              display: none;
+            "
+          >
+            Select an answer to continue.
+          </div>
+          <div class="quiz-nav" id="quizNav">
+            <button
+              class="nav-prev"
+              id="prevBtn"
+              onclick="prevQuestion()"
+              disabled
+            >
+              &larr; Previous
+            </button>
+            <button
+              class="btn btn-primary nav-next"
+              id="nextBtn"
+              onclick="nextQuestion()"
+            >
+              Next &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== RESULT ===================== -->
+    <section class="screen" id="screen-result">
+      <div class="wrap">
+        <div class="result-wrap">
+          <h2 class="done">Test completed!</h2>
+          <p class="done-sub">You've completed all 40 questions.</p>
+
+          <div class="result-card">
+            <p class="result-label">Your result</p>
+            <p class="result-score">31<span>/40</span></p>
+            <p class="result-caption">correct answers</p>
+
+            <p class="result-explain">
+              Your score gives you an indication of your current performance,
+              but the number of correct answers alone does not provide a precise
+              CEFR level.
+            </p>
+
+            <span class="free-pill">Free</span>
+            <p class="result-cta-head">Want to know your English level?</p>
+            <p class="result-cta-body">
+              Send your result to Academia and receive a CEFR level assessment,
+              brief analysis and recommendation for your next step.
+            </p>
+
+            <div class="result-actions">
+              <button class="btn btn-gold" onclick="goTo('nextsteps')">
+                Send my result and find out my level &rarr;
+              </button>
+              <button class="btn-text" onclick="restartTest()">
+                Start over
+              </button>
+            </div>
+          </div>
+
+          <div class="benefit-strip">
+            <div class="benefit">
+              <p class="b-title">CEFR level</p>
+              <p>
+                Find out where your English currently sits within the CEFR
+                framework.
+              </p>
+            </div>
+            <div class="benefit">
+              <p class="b-title">Personalised feedback</p>
+              <p>Receive a brief assessment of your current position.</p>
+            </div>
+            <div class="benefit">
+              <p class="b-title">Next-step recommendation</p>
+              <p>Understand what you should work on next.</p>
+            </div>
+          </div>
+
+          <div class="trust-strip" id="trust">
+            <div class="trust-item">
+              <div class="t-num">1997</div>
+              <div class="t-cap">Established</div>
+            </div>
+            <div class="trust-item">
+              <div class="t-num">Cambridge</div>
+              <div class="t-cap">
+                Exam Preparation Centre &middot; Licence RSPC000084
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="t-num">Aptis</div>
+              <div class="t-cap">Testing Centre</div>
+            </div>
+            <div class="trust-item">
+              <div class="t-num">British Council</div>
+              <div class="t-cap">Long-term Advantage Programme partner</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== NEXT STEPS + OFFER + PAYMENT + FAQ ===================== -->
+    <section class="screen" id="screen-nextsteps">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>What's your next step?</h2>
+          <p>
+            Choose your individual online lessons, a CEFR language certificate,
+            IELTS preparation or an IELTS mock test.
+          </p>
+        </div>
+
+        <div class="service-grid">
+          <div class="service-card">
+            <h3>Improve your English</h3>
+            <p>
+              Individual online lessons, built around your level, goals and
+              pace.
+            </p>
+            <a class="btn-text" href="#">Learn more &rarr;</a>
+          </div>
+          <div class="service-card">
+            <h3>English certificate</h3>
+            <p>A recognised, bilingual CEFR language certificate.</p>
+            <a class="btn-text" href="#">Learn more &rarr;</a>
+          </div>
+          <div class="service-card">
+            <h3>IELTS preparation</h3>
+            <p>Individual preparation classes for the IELTS exam.</p>
+            <a class="btn-text" href="#">Learn more &rarr;</a>
+          </div>
+          <div class="service-card">
+            <h3>IELTS mock test</h3>
+            <p>A full IELTS exam simulation under real conditions.</p>
+            <a class="btn-text" href="#">Learn more &rarr;</a>
+          </div>
+        </div>
+
+        <div style="margin-top: 60px">
+          <div class="offer-card">
+            <p class="offer-label">Special offer</p>
+            <h2>A next step for your English</h2>
+            <p class="offer-product">Individual online English lessons</p>
+            <p class="offer-detail">10 individual lessons</p>
+            <div class="price-row">
+              <span class="price-old">30,000 RSD</span>
+              <span class="price-new">25,000 RSD</span>
+            </div>
+            <span class="price-save">Save 5,000 RSD</span>
+            <p class="offer-fine">
+              Special price for users who completed the English test.<br />Offer
+              valid for 7 days.
+            </p>
+            <div class="offer-actions">
+              <button class="btn btn-gold">Buy &middot; pay 25,000 RSD</button>
+              <button class="btn-ghost-dark">
+                I'd like to speak to you first
+              </button>
+            </div>
+          </div>
+
+          <div class="pay-wrap">
+            <div class="pay-qr">
+              <div class="qr-box">QR payment code</div>
+              <span style="font-size: 12px; color: var(--ink-faint)"
+                >Scan to pay</span
+              >
+            </div>
+            <div class="pay-copy">
+              <h3>Payment</h3>
+              <p>
+                On desktop, scan the QR code with your banking app to complete
+                payment. Once paid, confirm below to link the payment to your
+                result.
+              </p>
+              <button class="btn btn-ghost mobile-pay-btn">
+                View payment details &rarr;
+              </button>
+              <button class="btn btn-ghost">
+                Paid, link payment to my result
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top: 76px">
+          <h2 style="font-size: 24px">Common questions</h2>
+        </div>
+        <div class="faq-wrap">
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              How long does the test take?<span class="faq-chevron"
+                >&#9660;</span
+              >
+            </button>
+            <div class="faq-a">
+              <p>Around 10 minutes for all 40 questions.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              Is the test really free?<span class="faq-chevron">&#9660;</span>
+            </button>
+            <div class="faq-a">
+              <p>
+                Yes. There is no charge to take the assessment or to receive
+                your CEFR-level recommendation.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              Will my result tell me my exact CEFR level?<span
+                class="faq-chevron"
+                >&#9660;</span
+              >
+            </button>
+            <div class="faq-a">
+              <p>
+                Your score is an indicator. Academia reviews your answers in
+                detail and sends you a precise CEFR-level assessment and
+                recommendation.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              What happens after I send my result?<span class="faq-chevron"
+                >&#9660;</span
+              >
+            </button>
+            <div class="faq-a">
+              <p>
+                Academia reviews your answers and contacts you with your CEFR
+                level, a brief analysis and a recommendation for your next step.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              Can I retake the test?<span class="faq-chevron">&#9660;</span>
+            </button>
+            <div class="faq-a"><p>Yes, you can start over at any time.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="trustFooter">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <div class="footer-logo">
+              <img
+                src="https://academia.rs/wp-content/uploads/2017/10/Academia-logo-krug-drop-shadow-small.png"
+                alt="Academia"
+              />
+            </div>
+            <p>Academia Languages &amp; Communication</p>
+            <p>Kosovska 28, 11000 Beograd</p>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <p>Phone / Viber / WhatsApp: 063 8305 344</p>
+            <p>Email: info@academia.rs</p>
+          </div>
+          <div class="footer-col">
+            <h4>Credentials</h4>
+            <p>Established 1997</p>
+            <p>Cambridge Exam Preparation Centre &middot; Licence RSPC000084</p>
+            <p>Aptis Testing Centre</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          &copy; 2026 Academia Languages &amp; Communication
+        </div>
+      </div>
+    </footer>
+
+    <div class="dev-controls">
+      <div class="wrap">
+        <span>Jump to state:</span>
+        <button class="dev-btn" onclick="goTo('hero')">Hero</button>
+        <button class="dev-btn" onclick="goTo('leadform')">Lead form</button>
+        <button class="dev-btn" onclick="goTo('quiz')">Quiz</button>
+        <button class="dev-btn" onclick="goTo('result')">Result</button>
+        <button class="dev-btn" onclick="goTo('nextsteps')">
+          Next steps / offer
+        </button>
+      </div>
     </div>
 
-    <div class="section-head" style="margin-top:76px;">
-      <h2 style="font-size:24px;">Common questions</h2>
-    </div>
-    <div class="faq-wrap">
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">How long does the test take?<span class="faq-chevron">&#9660;</span></button>
-        <div class="faq-a"><p>Around 10 minutes for all 40 questions.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Is the test really free?<span class="faq-chevron">&#9660;</span></button>
-        <div class="faq-a"><p>Yes. There is no charge to take the assessment or to receive your CEFR-level recommendation.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Will my result tell me my exact CEFR level?<span class="faq-chevron">&#9660;</span></button>
-        <div class="faq-a"><p>Your score is an indicator. Academia reviews your answers in detail and sends you a precise CEFR-level assessment and recommendation.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">What happens after I send my result?<span class="faq-chevron">&#9660;</span></button>
-        <div class="faq-a"><p>Academia reviews your answers and contacts you with your CEFR level, a brief analysis and a recommendation for your next step.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Can I retake the test?<span class="faq-chevron">&#9660;</span></button>
-        <div class="faq-a"><p>Yes, you can start over at any time.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
+    <script>
+      var questions = [
+        ["What's ____ name?", ["you", "she", "your", "yours"]],
+        ["We're Chinese, we're ____ Beijing.", ["for", "from", "in", "at"]],
+        ["Jane's ____ nice and polite.", ["a", "very", "the", "at"]],
+        [
+          "____ a light?",
+          ["Hvae you got", "Do have you", "Are you have", "Do you got"],
+        ],
+        [
+          "Margaret _____ usually come by bus.",
+          ["isn't", "don't", "doesn't", "aren't"],
+        ],
+        [
+          "They ____ at home last night.",
+          ["didn't", "weren't", "wasn't", "aren't"],
+        ],
+        ["What ____ you say?", ["are", "have", "were", "did"]],
+        ["Why ____ crying?", ["are you", "you are", "do you", "have you"]],
+        [
+          "Where ____ to spend your holidays next summer?",
+          ["will you", "have you", "are you going", "would you"],
+        ],
+        [
+          "____ never been to the theatre before.",
+          ["I've", "I'm", "I'll", "I can"],
+        ],
+        [
+          "Seiko watches ____ in Japan.",
+          ["are made", "made", "make", "are making"],
+        ],
+        [
+          "Where _____ when you met him?",
+          ["does he live", "is he living", "was he living", "has he lived"],
+        ],
+        [
+          "If ____ I'll tell him you called.",
+          ["I see him", "I'll see him", "I saw him", "I'd see him"],
+        ],
+        [
+          "What ____ since you arrived?",
+          ["are you doing", "were you doing", "was you doing", "did you do"],
+        ],
+        [
+          "Wine … made in Italy for thousands of years.",
+          ["has been", "have been", "was", "is"],
+        ],
+        [
+          "My husband ____ live in Spain.",
+          ["was used to", "used to", "use to", "was use to"],
+        ],
+        [
+          "If I ____ I would go out more.",
+          [
+            "wasn't married",
+            "didn't marry",
+            "haven't married",
+            "wouldn't marry",
+          ],
+        ],
+        [
+          "I was very ____ in the story.",
+          ["interesting", "interested", "interest", "amused"],
+        ],
+        [
+          "You ____ come if you don't want to.",
+          ["don't have", "don't need", "needn't", "needn't have"],
+        ],
+        [
+          "I ____ see you tomorrow. I'm not sure yet.",
+          ["maybe", "will", "might", "must"],
+        ],
+        [
+          "____ is bad for you.",
+          ["Smoking", "The smoking", "Smoker", "To smoke"],
+        ],
+        [
+          "I ____ told him if I had known he was your brother.",
+          ["hadn't", "wouldn't", "don't have", "wouldn't have"],
+        ],
+        [
+          "He ____ living there for three years before they found him.",
+          ["had been", "has been", "will be", "could be"],
+        ],
+        [
+          "I wish you ____ shout all the time.",
+          ["don't", "won't", "haven't", "wouldn't"],
+        ],
+        [
+          "By the time you arrive ____",
+          ["he'll leave.", "he'll have left.", "he left.", "he leaves."],
+        ],
+        [
+          "The house _____ built in the 16th century.",
+          ["might have been", "might be", "could be", "should be"],
+        ],
+        [
+          "Don't forget ____ me a newspaper.",
+          ["to buy", "buying", "that you buy", "to have bought"],
+        ],
+        [
+          "Whenever there was a visitor, the dog ____ to the door.",
+          ["runs", "would run", "will run", "is running"],
+        ],
+        [
+          "He is an executive in ____.",
+          [
+            "the car industry",
+            "car industry",
+            "car industries",
+            "car industrial",
+          ],
+        ],
+        [
+          "Peter sold his car ____ save money.",
+          ["so he", "because", "as a result", "in order to"],
+        ],
+        [
+          "He advised me ____ the doctor.",
+          ["that I see", "to see", "see", "seeing"],
+        ],
+        [
+          "I ____ travelling by bus.",
+          ["am not used to", "didn't used to", "used to", "don't use to"],
+        ],
+        [
+          "He didn't come last night. I wish that he ____",
+          ["had", "did", "can", "have"],
+        ],
+        [
+          "I am going to a wedding. I need to ____ .",
+          [
+            "be cutting my hair",
+            "cutting my hair",
+            "have cut my hair",
+            "have my hair cut",
+          ],
+        ],
+        [
+          "Which would you ____ have, gold or silver?",
+          ["prefer", "more", "better", "rather"],
+        ],
+        [
+          "My sister has been in hospital. I wonder how she ____.",
+          ["is getting on", "gets on", "has got across", "is getting away"],
+        ],
+        [
+          "The man said he did not ____ to go by bus.",
+          ["care for", "mind having", "bother about", "much mind"],
+        ],
+        [
+          "Although he confessed to the crime, the judge let the boy ____.",
+          ["alone", "forgive", "come in", "off"],
+        ],
+        [
+          "I've never come ____ that word before.",
+          ["across", "over", "into", "of"],
+        ],
+        [
+          "The student could not answer the question, so he gave ____.",
+          ["up", "away", "off", "into"],
+        ],
+      ];
+      var current = 0;
+      var selected = new Array(questions.length).fill(null);
 
-<footer id="trustFooter">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <div class="footer-logo"><img src="https://academia.rs/wp-content/uploads/2017/10/Academia-logo-krug-drop-shadow-small.png" alt="Academia"></div>
-        <p>Academia Languages &amp; Communication</p>
-        <p>Kosovska 28, 11000 Beograd</p>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <p>Phone / Viber / WhatsApp: 063 8305 344</p>
-        <p>Email: info@academia.rs</p>
-      </div>
-      <div class="footer-col">
-        <h4>Credentials</h4>
-        <p>Established 1997</p>
-        <p>Cambridge Exam Preparation Centre &middot; Licence RSPC000084</p>
-        <p>Aptis Testing Centre</p>
-      </div>
-    </div>
-    <div class="footer-bottom">&copy; 2026 Academia Languages &amp; Communication</div>
-  </div>
-</footer>
+      function goTo(name) {
+        document.querySelectorAll(".screen").forEach(function (s) {
+          s.classList.remove("active");
+        });
+        document.getElementById("screen-" + name).classList.add("active");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        if (name === "quiz") {
+          renderQuestion();
+        }
+      }
 
-<div class="dev-controls">
-  <div class="wrap">
-    <span>Jump to state:</span>
-    <button class="dev-btn" onclick="goTo('hero')">Hero</button>
-    <button class="dev-btn" onclick="goTo('leadform')">Lead form</button>
-    <button class="dev-btn" onclick="goTo('quiz')">Quiz</button>
-    <button class="dev-btn" onclick="goTo('result')">Result</button>
-    <button class="dev-btn" onclick="goTo('nextsteps')">Next steps / offer</button>
-  </div>
-</div>
+      document.querySelectorAll(".goal-card").forEach(function (card) {
+        card.addEventListener("click", function () {
+          document.querySelectorAll(".goal-card").forEach(function (c) {
+            c.classList.remove("selected");
+          });
+          card.classList.add("selected");
+          document.getElementById("err-goal").style.display = "none";
+        });
+      });
 
-<script>
-var questions = [
-["What's ____ name?",["you","she","your","yours"]],
-["We're Chinese, we're ____ Beijing.",["for","from","in","at"]],
-["Jane's ____ nice and polite.",["a","very","the","at"]],
-["____ a light?",["Hvae you got","Do have you","Are you have","Do you got"]],
-["Margaret _____ usually come by bus.",["isn't","don't","doesn't","aren't"]],
-["They ____ at home last night.",["didn't","weren't","wasn't","aren't"]],
-["What ____ you say?",["are","have","were","did"]],
-["Why ____ crying?",["are you","you are","do you","have you"]],
-["Where ____ to spend your holidays next summer?",["will you","have you","are you going","would you"]],
-["____ never been to the theatre before.",["I've","I'm","I'll","I can"]],
-["Seiko watches ____ in Japan.",["are made","made","make","are making"]],
-["Where _____ when you met him?",["does he live","is he living","was he living","has he lived"]],
-["If ____ I'll tell him you called.",["I see him","I'll see him","I saw him","I'd see him"]],
-["What ____ since you arrived?",["are you doing","were you doing","was you doing","did you do"]],
-["Wine … made in Italy for thousands of years.",["has been","have been","was","is"]],
-["My husband ____ live in Spain.",["was used to","used to","use to","was use to"]],
-["If I ____ I would go out more.",["wasn't married","didn't marry","haven't married","wouldn't marry"]],
-["I was very ____ in the story.",["interesting","interested","interest","amused"]],
-["You ____ come if you don't want to.",["don't have","don't need","needn't","needn't have"]],
-["I ____ see you tomorrow. I'm not sure yet.",["maybe","will","might","must"]],
-["____ is bad for you.",["Smoking","The smoking","Smoker","To smoke"]],
-["I ____ told him if I had known he was your brother.",["hadn't","wouldn't","don't have","wouldn't have"]],
-["He ____ living there for three years before they found him.",["had been","has been","will be","could be"]],
-["I wish you ____ shout all the time.",["don't","won't","haven't","wouldn't"]],
-["By the time you arrive ____",["he'll leave.","he'll have left.","he left.","he leaves."]],
-["The house _____ built in the 16th century.",["might have been","might be","could be","should be"]],
-["Don't forget ____ me a newspaper.",["to buy","buying","that you buy","to have bought"]],
-["Whenever there was a visitor, the dog ____ to the door.",["runs","would run","will run","is running"]],
-["He is an executive in ____.",["the car industry","car industry","car industries","car industrial"]],
-["Peter sold his car ____ save money.",["so he","because","as a result","in order to"]],
-["He advised me ____ the doctor.",["that I see","to see","see","seeing"]],
-["I ____ travelling by bus.",["am not used to","didn't used to","used to","don't use to"]],
-["He didn't come last night. I wish that he ____",["had","did","can","have"]],
-["I am going to a wedding. I need to ____ .",["be cutting my hair","cutting my hair","have cut my hair","have my hair cut"]],
-["Which would you ____ have, gold or silver?",["prefer","more","better","rather"]],
-["My sister has been in hospital. I wonder how she ____.",["is getting on","gets on","has got across","is getting away"]],
-["The man said he did not ____ to go by bus.",["care for","mind having","bother about","much mind"]],
-["Although he confessed to the crime, the judge let the boy ____.",["alone","forgive","come in","off"]],
-["I've never come ____ that word before.",["across","over","into","of"]],
-["The student could not answer the question, so he gave ____.",["up","away","off","into"]]
-];
-var current=0;
-var selected=new Array(questions.length).fill(null);
+      function submitLeadForm() {
+        var name = document.getElementById("fullname");
+        var email = document.getElementById("email");
+        var goal = document.querySelector(".goal-card.selected");
+        var ok = true;
+        if (name.value.trim() === "") {
+          document.getElementById("err-fullname").style.display = "block";
+          ok = false;
+        } else {
+          document.getElementById("err-fullname").style.display = "none";
+        }
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email.value.trim())) {
+          document.getElementById("err-email").style.display = "block";
+          ok = false;
+        } else {
+          document.getElementById("err-email").style.display = "none";
+        }
+        if (!goal) {
+          document.getElementById("err-goal").style.display = "block";
+          ok = false;
+        }
+        if (!ok) return;
+        goTo("quiz");
+      }
 
-function goTo(name){
-  document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active');});
-  document.getElementById('screen-'+name).classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
-  if(name==='quiz'){renderQuestion();}
-}
+      function renderQuestion() {
+        document.getElementById("answerWarning").style.display = "none";
+        var q = questions[current];
+        document.getElementById("qEyebrow").textContent =
+          "Question " + (current + 1);
+        document.getElementById("qText").textContent = q[0];
+        document.getElementById("quizCount").innerHTML =
+          "Question " +
+          (current + 1) +
+          " of " +
+          questions.length +
+          ' &middot; <span id="quizPct">' +
+          Math.round(((current + 1) / questions.length) * 100) +
+          "%</span>";
+        document.getElementById("progressFill").style.width =
+          ((current + 1) / questions.length) * 100 + "%";
+        var ansWrap = document.getElementById("answers");
+        ansWrap.innerHTML = "";
+        q[1].forEach(function (opt, i) {
+          var row = document.createElement("div");
+          row.className =
+            "answer-row" + (selected[current] === i ? " selected" : "");
+          row.innerHTML = '<span class="radio"></span><span>' + opt + "</span>";
+          row.addEventListener("click", function () {
+            selected[current] = i;
+            renderQuestion();
+          });
+          ansWrap.appendChild(row);
+        });
+        document.getElementById("prevBtn").disabled = current === 0;
+        document.getElementById("nextBtn").textContent =
+          current === questions.length - 1 ? "See my result" : "Next \u2192";
+      }
 
-document.querySelectorAll('.goal-card').forEach(function(card){
-  card.addEventListener('click',function(){
-    document.querySelectorAll('.goal-card').forEach(function(c){c.classList.remove('selected');});
-    card.classList.add('selected');
-    document.getElementById('err-goal').style.display='none';
-  });
-});
+      function nextQuestion() {
+        if (selected[current] === null) {
+          document.getElementById("answerWarning").style.display = "block";
+          return;
+        }
+        document.getElementById("answerWarning").style.display = "none";
+        if (current < questions.length - 1) {
+          current++;
+          renderQuestion();
+        } else {
+          goTo("result");
+        }
+      }
+      function prevQuestion() {
+        if (current > 0) {
+          current--;
+          renderQuestion();
+        }
+      }
+      function restartTest() {
+        current = 0;
+        selected = new Array(questions.length).fill(null);
+        goTo("leadform");
+      }
 
-function submitLeadForm(){
-  var name=document.getElementById('fullname');
-  var email=document.getElementById('email');
-  var goal=document.querySelector('.goal-card.selected');
-  var ok=true;
-  if(name.value.trim()===''){document.getElementById('err-fullname').style.display='block';ok=false;}
-  else{document.getElementById('err-fullname').style.display='none';}
-  var emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if(!emailPattern.test(email.value.trim())){document.getElementById('err-email').style.display='block';ok=false;}
-  else{document.getElementById('err-email').style.display='none';}
-  if(!goal){document.getElementById('err-goal').style.display='block';ok=false;}
-  if(!ok)return;
-  goTo('quiz');
-}
+      function toggleFaq(btn) {
+        var item = btn.parentElement;
+        var wasOpen = item.classList.contains("open");
+        document.querySelectorAll(".faq-item").forEach(function (f) {
+          f.classList.remove("open");
+        });
+        if (!wasOpen) item.classList.add("open");
+      }
 
-function renderQuestion(){
-  document.getElementById('answerWarning').style.display='none';
-  var q=questions[current];
-  document.getElementById('qEyebrow').textContent='Question '+(current+1);
-  document.getElementById('qText').textContent=q[0];
-  document.getElementById('quizCount').innerHTML='Question '+(current+1)+' of '+questions.length+' &middot; <span id="quizPct">'+Math.round(((current+1)/questions.length)*100)+'%</span>';
-  document.getElementById('progressFill').style.width=(((current+1)/questions.length)*100)+'%';
-  var ansWrap=document.getElementById('answers');
-  ansWrap.innerHTML='';
-  q[1].forEach(function(opt,i){
-    var row=document.createElement('div');
-    row.className='answer-row'+(selected[current]===i?' selected':'');
-    row.innerHTML='<span class="radio"></span><span>'+opt+'</span>';
-    row.addEventListener('click',function(){
-      selected[current]=i;
-      renderQuestion();
-    });
-    ansWrap.appendChild(row);
-  });
-  document.getElementById('prevBtn').disabled=(current===0);
-  document.getElementById('nextBtn').textContent=(current===questions.length-1)?'See my result':'Next \u2192';
-}
-
-function nextQuestion(){
-  if(selected[current]===null){
-    document.getElementById('answerWarning').style.display='block';
-    return;
-  }
-  document.getElementById('answerWarning').style.display='none';
-  if(current<questions.length-1){
-    current++;
-    renderQuestion();
-  } else {
-    goTo('result');
-  }
-}
-function prevQuestion(){
-  if(current>0){current--;renderQuestion();}
-}
-function restartTest(){
-  current=0;
-  selected=new Array(questions.length).fill(null);
-  goTo('leadform');
-}
-
-function toggleFaq(btn){
-  var item=btn.parentElement;
-  var wasOpen=item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(function(f){f.classList.remove('open');});
-  if(!wasOpen)item.classList.add('open');
-}
-
-window.addEventListener('scroll',function(){
-  var h=document.getElementById('siteHeader');
-  if(window.scrollY>10)h.classList.add('scrolled');
-  else h.classList.remove('scrolled');
-});
-</script>
-
-</body>
+      window.addEventListener("scroll", function () {
+        var h = document.getElementById("siteHeader");
+        if (window.scrollY > 10) h.classList.add("scrolled");
+        else h.classList.remove("scrolled");
+      });
+    </script>
+  </body>
 </html>
